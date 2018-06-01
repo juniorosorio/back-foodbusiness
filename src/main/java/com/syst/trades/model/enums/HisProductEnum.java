@@ -7,7 +7,7 @@ package com.syst.trades.model.enums;
  */
 public enum HisProductEnum {
 	
-	I,
+	,
 	O
 
 }
