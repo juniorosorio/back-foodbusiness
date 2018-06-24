@@ -1,5 +1,7 @@
 package com.syst.trades.model;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -130,8 +132,14 @@ public class Address {
 		this.updateUser = updateUser;
 	}
 
-	public Date getCreationDate() {
-		return creationDate;
+	public String getCreationDate() throws ParseException {
+		String strCreationDate = "";
+		if (null != creationDate) {
+			SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");    
+			strCreationDate = fmt.format(creationDate);
+		}	
+		return strCreationDate;
+		
 	}
 
 	public void setCreationDate(Date creationDate) {
