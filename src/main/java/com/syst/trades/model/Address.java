@@ -135,7 +135,7 @@ public class Address {
 	public String getCreationDate() throws ParseException {
 		String strCreationDate = "";
 		if (null != creationDate) {
-			SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");    
+			SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");    
 			strCreationDate = fmt.format(creationDate);
 		}	
 		return strCreationDate;
