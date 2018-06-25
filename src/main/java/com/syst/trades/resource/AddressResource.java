@@ -4,7 +4,6 @@ import java.net.URI;
 import java.util.Date;
 import java.util.List;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,31 +22,36 @@ import com.syst.trades.repository.AddressRepository;
 @RestController
 @RequestMapping("/address")
 public class AddressResource {
-	
+
 	@Autowired
 	private AddressRepository addressRepository;
-	
+
 	@GetMapping
 	public List<Address> toList() {
-		return addressRepository.findAll();		
+		return addressRepository.findAll();
 	}
-	
+
 	@PostMapping
 	public ResponseEntity<Address> toSave(@Valid @RequestBody Address address) {
 
 		Date date = new Date(System.currentTimeMillis());
 		address.setCreationDate(date);
 		Address addressSaved = addressRepository.save(address);
-		
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}")
-				.buildAndExpand(addressSaved.getId()).toUri();
-		
+
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}").buildAndExpand(addressSaved.getId())
+				.toUri();
+
 		return ResponseEntity.created(uri).body(addressSaved);
 	}
-	
+
 	@GetMapping("/{id}")
-	public Address addressById(@PathVariable Long id) {
-		return addressRepository.findOne(id);		
+	public ResponseEntity<Address> addressById(@PathVariable Long id) {
+
+		if (addressRepository.findOne(id) == null) {
+			return ResponseEntity.notFound().build();
+		} else {
+			return ResponseEntity.ok(addressRepository.findOne(id));
+		}
 	}
 
 }
