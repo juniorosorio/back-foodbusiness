@@ -40,18 +40,14 @@ public class AddressResource {
 
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}").buildAndExpand(addressSaved.getId())
 				.toUri();
-
 		return ResponseEntity.created(uri).body(addressSaved);
 	}
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Address> addressById(@PathVariable Long id) {
+		Address address = addressRepository.findOne(id);		
+		return address != null ? ResponseEntity.ok(address) : ResponseEntity.notFound().build();
 
-		if (addressRepository.findOne(id) == null) {
-			return ResponseEntity.notFound().build();
-		} else {
-			return ResponseEntity.ok(addressRepository.findOne(id));
-		}
 	}
 
 }
