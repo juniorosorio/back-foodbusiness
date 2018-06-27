@@ -1,5 +1,6 @@
 package com.syst.trades.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -141,8 +142,14 @@ public class Client {
 		this.updateUser = updateUser;
 	}
 
-	public Date getCreationDate() {
-		return creationDate;
+	public String getCreationDate() {
+		String strCreationDate = "";
+		if (null != creationDate) {
+			SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");    
+			strCreationDate = fmt.format(creationDate);
+		}	
+		return strCreationDate;
+		
 	}
 
 	public void setCreationDate(Date creationDate) {
