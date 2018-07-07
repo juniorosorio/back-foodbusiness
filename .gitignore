@@ -9,6 +9,8 @@
 .settings
 .springBeans
 .sts4-cache
+/home/allan/workspace-sts/trade/src/main/resources/application.properties
+
 
 ### IntelliJ IDEA ###
 .idea
