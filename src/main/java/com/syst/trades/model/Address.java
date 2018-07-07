@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "address")
@@ -19,19 +21,18 @@ public class Address {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "address")
+	@NotNull
+	@Size(min = 4, max = 40)
 	private String address;
 	
-	@Column(name = "number")
+	@NotNull
+	@Size(min = 1, max = 10)
 	private String number;
 	
-	@Column(name = "neighborhood")
 	private String neighborhood;
 	
-	@Column(name = "city")
 	private String city;
 	
-	@Column(name = "complement")
 	private String complement;
 	
 	@Column(name = "reference_point")
