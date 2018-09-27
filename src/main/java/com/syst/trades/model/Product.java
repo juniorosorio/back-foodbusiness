@@ -1,5 +1,6 @@
 package com.syst.trades.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -7,52 +8,57 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "product")
 public class Product {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(name = "trade_id")
-	private Integer tradeId; //aqui deve ser alterado para entity, o tipo não será mais Integer e sim Trade
-	
+	private Integer tradeId; // aqui deve ser alterado para entity, o tipo não será mais Integer e sim Trade
+
 	@Column(name = "name")
 	private String name;
-	
+
 	@Column(name = "description")
 	private String description;
-	
+
 	@Column(name = "price")
 	private Double price;
-	
+
 	@Column(name = "control_quantity")
 	private Boolean controlQuantity;
-	
+
 	@Column(name = "quantity")
 	private Integer quantity;
-	
+
 	@Column(name = "quantity_reserved")
 	private Integer quantityReserved;
-	
+
 	@Column(name = "last_price")
 	private Double lastPrice;
-	
+
 	@Column(name = "active")
 	private Boolean active;
 	
+	@Column(name = "product_image")
+	private String productImage;
+
 	@Column(name = "creation_user")
 	private String creationUser;
-	
+
 	@Column(name = "update_user")
 	private String updateUser;
-	
-	@Column(name = "creation_date")
+
+	@Column(name = "creation_date", updatable=false)
 	private Date creationDate;
-	
+
 	@Column(name = "update_date")
 	private Date updateDate;
 
@@ -136,6 +142,14 @@ public class Product {
 		this.active = active;
 	}
 
+	public String getProductImage() {
+		return productImage;
+	}
+	
+	public void setProductImage(String productImage) {
+		this.productImage = productImage;
+	}
+	
 	public String getCreationUser() {
 		return creationUser;
 	}
@@ -152,20 +166,42 @@ public class Product {
 		this.updateUser = updateUser;
 	}
 
-	public Date getCreationDate() {
-		return creationDate;
+	public String getCreationDate() {
+		String strCreationDate = "";
+		if (null != this.creationDate) {
+			SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+			strCreationDate = fmt.format(creationDate);
+		}
+		return strCreationDate;
 	}
 
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
 
-	public Date getUpdateDate() {
-		return updateDate;
+	public String getUpdateDate() {
+		String strUpdatenDate = "";
+		if (null != this.updateDate) {
+			SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+			strUpdatenDate = fmt.format(updateDate);
+		}
+		return strUpdatenDate;
 	}
 
 	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
+	}
+	
+	@PrePersist
+	public void prePersist() {
+		this.creationDate = new Date();
+//		this.creationUser = Ruller...
+	}
+	
+	@PreUpdate
+	public void preUpdate() {
+		this.updateDate = new Date();
+//		this.updateUser = Ruller...
 	}
 
 }
