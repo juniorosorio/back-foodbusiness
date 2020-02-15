@@ -1,0 +1,6 @@
+- pipe: atlassian/heroku-deploy:1.1.1
+  variables:
+    HEROKU_API_KEY: $HEROKU_API_KEY
+    HEROKU_APP_NAME: 'Food Business'
+    ZIP_FILE: 'food-business.tar.gz'
+    WAIT: 'true'
