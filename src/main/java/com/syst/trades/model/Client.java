@@ -16,7 +16,7 @@ public class Client {
 
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 	
 	@Column(name = "last_address_requested_id")
 	private Long lastAddressRequestedId;
@@ -54,11 +54,11 @@ public class Client {
 	@Column(name = "update_date")
 	private Date updateDate;
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
