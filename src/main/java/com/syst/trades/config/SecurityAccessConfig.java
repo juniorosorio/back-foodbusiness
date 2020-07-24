@@ -9,7 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SecurityAccessConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
-	public void configure(HttpSecurity security) throws Exception {
+	protected void configure(HttpSecurity security) throws Exception {
 		security.authorizeRequests()
 				.antMatchers("/v2/api-docs",
 						"/configuration/ui",
