@@ -1,17 +1,17 @@
 package com.syst.trades.model;
 
-import java.util.Collections;
 import java.util.Date;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "product_sale")
@@ -30,10 +30,12 @@ public class ProductSale {
 	// @OneToMany(mappedBy = "team", targetEntity = Player.class, fetch =
 	// FetchType.LAZY, cascade = CascadeType.ALL)
 	// private List<Player> players;
-
-	@Column(name = "product_id")
-	private Long productId;
-
+	
+	@JsonIgnore
+	@ManyToOne
+    @JoinColumn(name = "product_id", nullable=false)
+    private Product product;
+	
 	@Column(name = "quantity_sold")
 	private Integer quantitySold;
 
@@ -57,9 +59,6 @@ public class ProductSale {
 
 	@Column(name = "update_date")
 	private Date updateDate;
-	
-	@OneToMany(mappedBy = "group", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Product> products = Collections.emptyList();
 
 	public Long getId() {
 		return id;
@@ -85,12 +84,12 @@ public class ProductSale {
 		this.saleId = saleId;
 	}
 
-	public Long getProduct() {
-		return productId;
+	public Product getProduct() {
+		return product;
 	}
 
-	public void setProduct(Long productId) {
-		this.productId = productId;
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 
 	public Integer getQuantitySold() {

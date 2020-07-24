@@ -9,6 +9,6 @@ import com.syst.trades.model.ProductSale;
 
 public interface ProductSaleRepository extends JpaRepository<ProductSale, Long> {
 	
-	List<Product> findByProductsName(String name);
+	List<Product> findByProductName(String name);
 
 }
