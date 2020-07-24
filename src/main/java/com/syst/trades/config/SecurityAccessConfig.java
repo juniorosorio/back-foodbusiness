@@ -9,13 +9,16 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SecurityAccessConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
-	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/v2/api-docs",
-				"/configuration/ui",
-				"/swagger-resources/**",
-				"/configuration/security",
-				"/swagger-ui.html",
-				"/webjars/**");
-	}
+	public void configure(HttpSecurity security) throws Exception {
+		security.authorizeRequests()
+				.antMatchers("/v2/api-docs",
+						"/configuration/ui",
+						"/swagger-resources",
+						"/configuration/security",
+						"/swagger-ui.html",
+						"/webjars/**",
+						"/swagger-resources/configuration/ui",
+						"/swagger-ui.html")
+				.permitAll();
 
 }
