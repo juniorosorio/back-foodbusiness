@@ -3,6 +3,10 @@ Back of the trade project, here covers the whole business rule about trade of sn
 
 deployed in heroku.com
 
+# spring basic security access:
+- Login: allan
+- Password: 123
+
 opened resources:
 
 https://foodbusiness.herokuapp.com/product
