@@ -10,17 +10,18 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 public class SecurityAccessConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
-	protected void configure(HttpSecurity security) throws Exception {
-		security.authorizeRequests()
-				.antMatchers("/v2/api-docs",
-						"/configuration/ui",
-						"/swagger-resources",
-						"/configuration/security",
-						"/swagger-ui.html",
-						"/webjars/**",
-						"/swagger-resources/configuration/ui",
-						"/swagger-ui.html")
-				.permitAll();
+	public void configure(HttpSecurity security) throws Exception {
+		security.csrf().disable()
+		.authorizeRequests()
+		.antMatchers("/v2/api-docs",
+					"/configuration/ui",
+					"/swagger-resources",
+					"/configuration/security",
+					"/swagger-ui.html",
+					"/webjars/**",
+					"/swagger-resources/configuration/ui",
+					"/swagger-ui.html")
+			.permitAll();
 	}
 
 }
