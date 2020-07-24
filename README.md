@@ -17,5 +17,5 @@ https://food-business.herokuapp.com/address
 
 https://food-business.herokuapp.com/trade
 
-for more informations access swagger documentation in 
-https://food-business.herokuapp.com/trade/swagger-ui.html
+for more informations access swagger documentation in: 
+https://food-business.herokuapp.com/swagger-ui.html
