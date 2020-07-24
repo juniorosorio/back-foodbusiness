@@ -20,5 +20,6 @@ public class SecurityAccessConfig extends WebSecurityConfigurerAdapter {
 						"/swagger-resources/configuration/ui",
 						"/swagger-ui.html")
 				.permitAll();
+	}
 
 }
