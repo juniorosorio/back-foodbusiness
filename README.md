@@ -9,12 +9,13 @@ deployed in heroku.com
 
 opened resources:
 
-https://foodbusiness.herokuapp.com/product
+https://food-business.herokuapp.com/product
 
-https://foodbusiness.herokuapp.com/client
+https://food-business.herokuapp.com/client
 
-https://foodbusiness.herokuapp.com/address
+https://food-business.herokuapp.com/address
 
-https://foodbusiness.herokuapp.com/trade
+https://food-business.herokuapp.com/trade
 
-for more informations access swagger documentation in https://foodbusiness.herokuapp.com/trade/swagger-ui.html
+for more informations access swagger documentation in 
+https://food-business.herokuapp.com/trade/swagger-ui.html
