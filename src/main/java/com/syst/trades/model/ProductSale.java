@@ -31,10 +31,9 @@ public class ProductSale {
 	// FetchType.LAZY, cascade = CascadeType.ALL)
 	// private List<Player> players;
 	
-	@JsonIgnore
 	@ManyToOne
-    @JoinColumn(name = "product_id", nullable=false)
-    private Product product;
+        @JoinColumn(name = "product_id", nullable=false)
+        private Product product;
 	
 	@Column(name = "quantity_sold")
 	private Integer quantitySold;
