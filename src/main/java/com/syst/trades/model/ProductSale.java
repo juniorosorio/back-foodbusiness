@@ -11,8 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 @Table(name = "product_sale")
 public class ProductSale {
@@ -30,11 +28,11 @@ public class ProductSale {
 	// @OneToMany(mappedBy = "team", targetEntity = Player.class, fetch =
 	// FetchType.LAZY, cascade = CascadeType.ALL)
 	// private List<Player> players;
-	
+
 	@ManyToOne
-        @JoinColumn(name = "product_id", nullable=false)
-        private Product product;
-	
+	@JoinColumn(name = "product_id", nullable = false)
+	private Product product;
+
 	@Column(name = "quantity_sold")
 	private Integer quantitySold;
 

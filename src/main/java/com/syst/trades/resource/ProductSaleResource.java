@@ -19,7 +19,7 @@ import com.syst.trades.model.ProductSale;
 import com.syst.trades.repository.ProductSaleRepository;
 
 @RestController
-@RequestMapping("/product-Sale")
+@RequestMapping("/product-sale")
 public class ProductSaleResource {
 
 	@Autowired
